@@ -45,12 +45,7 @@ class Solution
                 count+=hm.get(curSum-k);
             }
             
-            if(hm.containsKey(curSum)){
-                int val = hm.get(curSum);
-                hm.put(curSum, ++val);    
-            }else{
-                hm.put(curSum, 1);   
-            }
+            hm.put(curSum , hm.getOrDefault(curSum , 0) + 1);
             
         }
         
