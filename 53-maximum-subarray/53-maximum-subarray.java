@@ -2,6 +2,7 @@ class Solution {
     public int maxSubArray(int[] nums) {
         // return brute(nums);
         return better(nums);
+  
     }
     
     public int brute(int[] nums){
@@ -25,22 +26,16 @@ class Solution {
     
     public int better(int[] nums){
         int Max=nums[0];
-        int MaxCur=nums[0];
-        
-        for(int i=1; i<nums.length; i++){
-            
-            MaxCur = Math.max(nums[i], nums[i]+MaxCur);    
-            
+        int MaxCur=nums[0];       
+        for(int i=1; i<nums.length; i++){           
+            MaxCur = Math.max(nums[i], nums[i]+MaxCur);                
             if(MaxCur>Max){
-                Max=MaxCur;
-                
+                Max=MaxCur;  
             }
         }
         
         return Max;
     }
     
-    public int optimal(int[] nums){
-        return 0;
-    }
+
 }
