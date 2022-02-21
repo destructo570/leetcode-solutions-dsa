@@ -37,7 +37,29 @@ public class Main {
 class Solution {
     int count(int[] arr, int n, int x) {
         int count=0;
-        for(int i=0; i<arr.length; i++){
+        // for(int i=0; i<arr.length; i++){
+        //     if(arr[i]>x){
+        //         break;
+        //     }else if(arr[i]==x){
+        //         count++;
+        //     }
+        // }
+        
+        int idx = binarySearch(arr, x);
+        if(idx == -1) return 0;
+        if(idx == arr.length-1) return 1;
+        
+        //Check left side
+        for(int i=idx; i>=0; i--){
+            if(arr[i]<x){
+                break;
+            }else if(arr[i]==x){
+                count++;
+            }
+        }
+        
+        //Check right side
+        for(int i=idx+1; i<arr.length; i++){
             if(arr[i]>x){
                 break;
             }else if(arr[i]==x){
@@ -45,5 +67,25 @@ class Solution {
             }
         }
         return count;
+    }
+    
+    int binarySearch(int[] arr, int k){
+        int start = 0;
+        int end = arr.length-1;
+        
+        while(start<=end){
+            int midIdx = (start+end)/2;
+            int midItem = arr[midIdx];
+            
+            if(midItem==k){
+                return midIdx;
+            }else if(midItem>k){
+                end=midIdx-1;
+            }else{
+                start=midIdx+1;
+            }
+        }
+        
+        return -1;
     }
 }
