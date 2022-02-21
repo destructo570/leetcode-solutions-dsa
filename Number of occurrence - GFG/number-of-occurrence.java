@@ -47,7 +47,7 @@ class Solution {
         
         int idx = binarySearch(arr, x);
         if(idx == -1) return 0;
-        if(idx == arr.length-1) return 1;
+        // if(idx == arr.length-1) return 1;
         
         //Check left side
         for(int i=idx; i>=0; i--){
