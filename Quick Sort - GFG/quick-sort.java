@@ -30,40 +30,35 @@ class Sorting
 } }// } Driver Code Ends
 
 
-class Solution
-{
-static void quickSort(int arr[], int low, int high)
+class Solution{
+  //Function to sort an array using quick sort algorithm.
+    static void quickSort(int arr[], int l, int r)
     {
-        if(low >= high){
-            return;
-        }
-        int pivot = arr[high];
-        int leftP = partition(arr, low, high, pivot);
-        quickSort(arr, low, leftP-1);
-        quickSort(arr, leftP+1, high);       
-    }
-    static int partition(int arr[], int low, int high, int pivot)
-    {
-        int leftP = low;
-        int rightP = high;
-         
-        while(leftP < rightP){
-            while(leftP < rightP && arr[leftP] <= pivot){
-                leftP++;
-            }
-            while(leftP < rightP && arr[rightP] >= pivot){
-                rightP--;
-            }
-            swap(arr, leftP, rightP);
-        }
-        swap(arr, leftP, high);
-        return leftP;
-    } 
-    static void swap(int arr[], int firstNum, int secondNum)
-    {
-        int temp = arr[firstNum];
-        arr[firstNum] = arr[secondNum];
-        arr[secondNum] = temp;
-    }
+        if(l>=r) return;
 
+        int pi= partition(arr, l, r);
+        quickSort(arr, l, pi-1);
+        quickSort(arr, pi+1, r);
+    }
+    static int partition(int arr[], int l, int r)
+    {
+        int pivot = arr[r];
+        int i=l;
+        int j=l;
+         while (i<= r){
+            if(arr[i]<=pivot){
+                  swap(arr, i, j);
+                  j++;
+            }
+            i++;
+      }
+
+      return j-1;
+    } 
+
+    static void swap (int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
 }
