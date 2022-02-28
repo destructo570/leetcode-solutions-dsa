@@ -34,26 +34,28 @@ class Solution{
   //Function to sort an array using quick sort algorithm.
     static void quickSort(int arr[], int l, int r)
     {
-        if(l>=r) return;
+        if(l<r){
+            int pi = partition(arr, l, r);
+            quickSort(arr, l, pi-1);
+            quickSort(arr, pi+1, r);
+        }
 
-        int pi= partition(arr, l, r);
-        quickSort(arr, l, pi-1);
-        quickSort(arr, pi+1, r);
     }
     static int partition(int arr[], int l, int r)
     {
         int pivot = arr[r];
+        
         int i=l;
         int j=l;
-         while (i<= r){
+        while(i<=r){
             if(arr[i]<=pivot){
-                  swap(arr, i, j);
-                  j++;
+                swap(arr, i, j);
+                j++;
             }
             i++;
-      }
+        }
+        return j-1;
 
-      return j-1;
     } 
 
     static void swap (int[] arr, int i, int j){
