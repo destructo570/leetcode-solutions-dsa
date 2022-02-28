@@ -14,13 +14,16 @@ class Solution
 	public static void bubbleSort(int arr[], int n)
     {
         for(int i=arr.length; i>=0; i--){
+            boolean swap=false;
             for(int j=1; j<i; j++){
                 if(arr[j]<arr[j-1]){
                     int tmp=arr[j];
                     arr[j]=arr[j-1];
                     arr[j-1]=tmp;
+                    swap=true;
                 }
             }
+            if(!swap) break;
         }
     }
 }
