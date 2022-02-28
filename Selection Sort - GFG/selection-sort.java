@@ -40,17 +40,14 @@ class Solution
 	
 	void selectionSort(int arr[], int n)
 	{
-	       for(int i=0; i<n; i++){
-        int min=arr[i];
-         int minIdx=i;
-        
+	   for(int i=0; i<n; i++){
+        int minIdx=i;
         for(int j=i; j<n; j++){
-            if(arr[j]<min){
-                min=arr[j];
+            if(arr[j]<arr[minIdx]){
                 minIdx=j;
             }
         }
-        swap(arr, i, minIdx);
+        if(i!=minIdx) swap(arr, i, minIdx);
     }
 	}
 	
