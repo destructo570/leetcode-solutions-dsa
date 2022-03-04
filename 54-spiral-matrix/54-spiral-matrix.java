@@ -1,12 +1,10 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-      int col = matrix[0].length;
-        int row = matrix.length;
         int TR = matrix[0].length-1;
         int TL = 0;
         int BR = matrix.length-1;
         int BL = 0;
-        int elements = col*row;
+        int elements = matrix[0].length*matrix.length;
 
         ArrayList<Integer> result = new ArrayList<>();
 
@@ -19,11 +17,11 @@ class Solution {
             for(int j=TL+1; j<=BR-1 && result.size() < elements; j++){
                 result.add(matrix[j][TR]);
             }
-//            TraverseLeft
+            //TraverseLeft
             for(int j=TR; j>=BL && result.size() < elements; j--){
                 result.add(matrix[BR][j]);
             }
-//            TraverseUp
+            //TraverseUp
             for(int j=BR-1; j>=TL+1 && result.size() < elements; j--){
                 result.add(matrix[j][BL]);
             }
