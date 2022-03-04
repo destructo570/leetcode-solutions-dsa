@@ -2,39 +2,32 @@ class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
       int col = matrix[0].length;
         int row = matrix.length;
-        int TopRight = 0;
-        int BottomLeft = 0;
-        int TopBottom = 1;
-        int BottomTop = 1;
+        int TR = matrix[0].length-1;
+        int TL = 0;
+        int BR = matrix.length-1;
+        int BL = 0;
         int elements = col*row;
 
         ArrayList<Integer> result = new ArrayList<>();
 
-        int k=0;
-
         while (result.size() < elements){
-            for(int j=TopRight; j<col-TopRight && result.size() < elements; j++){
-                result.add(matrix[k][j]);
+            //TraverseRight
+            for(int j=TL; j<=TR && result.size() < elements; j++){
+                result.add(matrix[TL][j]);
             }
-            TopRight++;
-
-            for(int j=TopBottom; j<row-TopBottom && result.size() < elements; j++){
-                result.add(matrix[j][(col-1)-k]);
+            //TraverseBottom
+            for(int j=TL+1; j<=BR-1 && result.size() < elements; j++){
+                result.add(matrix[j][TR]);
             }
-            TopBottom++;
-
-            for(int j=(col-BottomLeft)-1; j>=BottomLeft && result.size() < elements; j--){
-                result.add(matrix[(row-1)-k][j]);
-          
+//            TraverseLeft
+            for(int j=TR; j>=BL && result.size() < elements; j--){
+                result.add(matrix[BR][j]);
             }
-            BottomLeft++;
-
-            for(int j=(row-BottomTop)-1; j>=BottomTop && result.size() < elements; j--){
-                result.add(matrix[j][k]);
+//            TraverseUp
+            for(int j=BR-1; j>=TL+1 && result.size() < elements; j--){
+                result.add(matrix[j][BL]);
             }
-            BottomTop++;
-
-            k++;
+            TL++;TR--;BL++;BR--;
         }
 
         return result;
