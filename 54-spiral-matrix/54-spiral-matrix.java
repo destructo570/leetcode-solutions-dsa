@@ -10,7 +10,7 @@ class Solution {
 
         while (result.size() < elements){
             //TraverseRight
-            for(int j=TL; j<=TR && result.size() < elements; j++){
+            for(int j=BL; j<=TR && result.size() < elements; j++){
                 result.add(matrix[TL][j]);
             }
             //TraverseBottom
