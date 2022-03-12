@@ -1,44 +1,29 @@
 class Solution {
     public void sortColors(int[] nums) {
         
-        int[] res = mergeSort(nums, 0, nums.length-1, (nums.length-1)/2);
+        int[] res = mergeSort(nums, 0, nums.length-1);
         for(int i=0; i<nums.length; i++){
             nums[i]=res[i];
         }
         
     }
     
-    public int[] mergeSort(int[] arr,int l,int r,int m){
+    public int[] mergeSort(int[] arr,int l,int r){
         
         if(l==r){
             int[] n = new int[1];
             n[0]=arr[l];
             return n;
         }
+        int m = (l+r)/2;
         
-        int[] left = mergeSort(arr, l, m, (l+m)/2);
-        int[] right = mergeSort(arr, m+1, r, ((m+1)+r)/2);
+        int[] left = mergeSort(arr, l, m);
+        int[] right = mergeSort(arr, m+1, r);
         return mergeSortedArrays(left,right);
     }
     
     public int[] mergeSortedArrays(int[] a, int[] b){
-//         int[] a = new int[m-l+1];
-//         int[] b = new int[r-m];
-//         int[] result = new int[r-l+1];
-//         int n1 = 0;
-//         int n2 = 0;
-//         int n3 = 0;
-        
-        
-//         for(int i=0; i<a.length; i++){
-//             a[i]=arr[l+i];
-//         }
-        
-//         for(int i=0; i<b.length; i++){
-//             b[i]=arr[m+i+1];
-//         }
-        
-//         int p,q,r;
+
         int[] result=new int[a.length+b.length];
         int j=0; int k=0; int l=0;
         
