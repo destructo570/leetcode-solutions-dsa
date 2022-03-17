@@ -1,11 +1,23 @@
 class Solution {
     public int firstUniqChar(String s) {
         
-         return naive(s);
+         return hashing(s);
         
     }
     
-        public static int naive(String s){
+    public static int hashing(String s){
+        HashMap<Character, Integer> hs = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++)
+            hs.put(s.charAt(i), hs.getOrDefault(s.charAt(i), 0)+1);
+        
+        for(int i=0; i<s.length(); i++)
+            if(hs.get(s.charAt(i))==1) return i;
+            
+        return -1;
+    }
+    
+    public static int naive(String s){
         int result=-1;
 
         for(int i=0; i<s.length(); i++){
