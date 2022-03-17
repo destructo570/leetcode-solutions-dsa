@@ -35,6 +35,19 @@ class Solution
     //Function to find the first non-repeating character in a string.
     static char nonrepeatingCharacter(String s)
     {
+        HashMap<Character, Integer> hs = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++)
+            hs.put(s.charAt(i), hs.getOrDefault(s.charAt(i), 0)+1);
+        
+        for(int i=0; i<s.length(); i++)
+            if(hs.get(s.charAt(i))==1) return s.charAt(i);
+            
+        return '$';
+    }
+    
+    static char naive(String s)
+    {
         for(int i=0; i<s.length(); i++){
             boolean found= false;
             for(int j=0; j<s.length(); j++){
@@ -46,6 +59,18 @@ class Solution
             if(!found) return s.charAt(i);
         }
         return '$';
+    }
+    
+    public static int hashing(String s){
+        HashMap<Character, Integer> hs = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++)
+            hs.put(s.charAt(i), hs.getOrDefault(s.charAt(i), 0)+1);
+        
+        for(int i=0; i<s.length(); i++)
+            if(hs.get(s.charAt(i))==1) return i;
+            
+        return -1;
     }
 }
 
