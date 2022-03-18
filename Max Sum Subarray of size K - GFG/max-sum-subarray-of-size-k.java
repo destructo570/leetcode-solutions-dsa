@@ -40,9 +40,9 @@ class Solution{
         int max=0;
         int k=0;
         int l=n;
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n; i++)
             sum+=arr.get(i);
-        }
+        
         max=sum;
 
         while(l<arr.size()){
