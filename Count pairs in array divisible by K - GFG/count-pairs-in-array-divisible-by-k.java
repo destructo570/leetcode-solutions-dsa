@@ -30,35 +30,21 @@ class GFG
 
 class Solution
 {
-    public static int countKdivPairs(int A[], int n, int K)
+    public static int countKdivPairs(int arr[], int n, int K)
     {
                 //code here        
-    int[] freq = new int[K];
+        int[] f=new int[K];
+        for(int i=0; i<arr.length; i++)
+            ++f[arr[i]%K];
 
-    // Count occurrences of all remainders
+        int count= f[0]*(f[0]-1)/2;
 
-    for (int i = 0; i < n; i++)
+        for(int i=1; i<=K/2 && i!=(K-i); i++){
+                count+=f[i]*f[K-i];
+        }
 
-        ++freq[A[i] % K];
-
-    // If both pairs are divisible by 'K'
-
-    int sum = freq[0] * (freq[0] - 1) / 2;
-
-    // count for all i and (k-i)
-
-    // freq pairs
-
-    for (int i = 1; i <= K / 2 && i != (K - i); i++)
-
-        sum += freq[i] * freq[K - i];
-
-    // If K is even
-
-    if (K % 2 == 0)
-
-        sum += (freq[K / 2] * (freq[K / 2] - 1) / 2);
-
-    return sum;
+        if(K%2==0)
+            count+=(f[K/2]*(f[K/2]-1)/2);
+        return count;
     }
 }
