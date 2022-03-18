@@ -44,8 +44,6 @@ class Solution{
         
         max=sum;
 
-        if(n>arr.size()-1) return sum;
-
         for(int i=n; i<arr.size(); i++){
             sum = sum - arr.get(i-n) + arr.get(i);
             if(sum>max) max=sum;
