@@ -38,21 +38,27 @@ class Solution{
         
         int sum = 0;
         int max=0;
-        int k=0;
-        int l=n;
+        // int k=0;
+        // int l=n;
         for(int i=0; i<n; i++)
             sum+=arr.get(i);
         
         max=sum;
 
-        while(l<arr.size()){
-            sum-=arr.get(k);
-            k++;
-            sum+=arr.get(l);
-            l++;
+        // while(l<arr.size()){
+        //     sum-=arr.get(k);
+        //     k++;
+        //     sum+=arr.get(l);
+        //     l++;
+        //     if(sum>max) max=sum;
+        // }
+        if(n>arr.size()-1) return sum;
+
+        for(int i=n; i<arr.size(); i++){
+            sum-=arr.get(i-n);
+            sum+=arr.get(i);
             if(sum>max) max=sum;
         }
-
         return max;
     }
 }
