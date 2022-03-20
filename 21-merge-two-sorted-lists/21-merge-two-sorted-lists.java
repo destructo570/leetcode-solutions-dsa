@@ -10,7 +10,33 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        return optimalOne(list1,list2);
+        return optimalTwo(list1,list2);
+    }
+    
+     public ListNode optimalTwo(ListNode l1, ListNode l2){
+        if(l1==null) return l2;
+        if(l2==null) return l1;
+         ListNode res = new ListNode(0);
+         ListNode current = res;
+        
+         while(l1!=null && l2!=null){
+             if(l1.val<l2.val){
+                 current.next=l1;
+                 current=l1;
+                 l1=l1.next;
+             }else{
+                 current.next=l2;
+                 current=l2;
+                 l2=l2.next;
+             }
+         }
+         if(l1!=null){
+             current.next=l1;
+         }else{
+             current.next=l2;
+         }
+        return res.next;
+        
     }
     
     public ListNode optimalOne(ListNode list1, ListNode list2){
