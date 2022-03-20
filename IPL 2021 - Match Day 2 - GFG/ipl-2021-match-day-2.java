@@ -42,6 +42,11 @@ class Main {
 class Solution {
     static ArrayList<Integer> max_of_subarrays(int arr[], int N, int K) {
         
+        
+        return solutionOne(arr, N, K);
+    }
+    
+    public static ArrayList<Integer> solutionOne(int arr[], int N, int K){
         int max = findMax(arr, 0, K-1);;
         
         ArrayList<Integer> res = new ArrayList<>();
