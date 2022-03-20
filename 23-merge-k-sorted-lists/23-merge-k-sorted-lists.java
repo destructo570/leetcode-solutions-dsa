@@ -11,14 +11,26 @@
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         
-        ListNode res = null;
+//         ListNode res = null;
         
-        for(int i=0; i<lists.length; i++){
-            if(res==null) res=lists[i];
-            else res=mergeTwo(res, lists[i]);
-        }
+//         for(int i=0; i<lists.length; i++){
+//             if(res==null) res=lists[i];
+//             else res=mergeTwo(res, lists[i]);
+//         }
         
-        return res;
+//         return res;
+        return mergeSort(lists, 0, lists.length-1);
+    }
+    
+    public ListNode mergeSort(ListNode[] lists, int lo,int hi){
+        if(lo>hi)return null;
+        if(lo==hi)return lists[lo];
+        
+        int mid = (lo+hi)/2;
+        ListNode left = mergeSort(lists, lo, mid);
+        ListNode right = mergeSort(lists, mid+1, hi);
+        return mergeTwo(left, right);
+        
     }
     
     public ListNode mergeTwo(ListNode l1, ListNode l2){
