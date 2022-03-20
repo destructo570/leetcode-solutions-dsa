@@ -10,11 +10,47 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        //make a new linked list of size l1+l2
-        //make two variables keeping track of current nodes in both lists
-        //run a loop until there are elements in both lists
-        //compare both current nodes add the smaller element to the new list and point to the next node
-        //add any elements left in the lists in the new result list
+        return optimalOne(list1,list2);
+    }
+    
+    public ListNode optimalOne(ListNode list1, ListNode list2){
+        ListNode a = list1;
+        ListNode b = list2;
+        ListNode head = null;
+        ListNode tail = null;
+        
+        if(list1==null) return list2;
+        if(list2==null) return list1;
+        
+        
+         while(a!=null && b!=null){
+             if(a.val<b.val){
+                 ListNode tmp = a.next;
+                 if(head==null) {
+                     head=a;
+                     tail=a;
+                 }
+                 tail.next=a;
+                 tail=a;
+                 a.next=b;
+                 a=tmp;
+             }else{
+                 ListNode tmp = b.next;
+                 if(head==null) {
+                     head=b;
+                     tail=b;
+                 }
+                 tail.next=b;
+                 tail=b;
+                 b.next=a;
+                 b=tmp;
+             }
+         }
+        return head;
+        
+    }
+    
+    public ListNode naive(ListNode list1, ListNode list2){
         
         ListNode result = null;
         ListNode resultTail = null;
