@@ -1,20 +1,12 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         
-//         int ri = 1;
-//         for(int i=0; i<nums.length; i++)
-//             if(nums[i]!=nums[ri-1])
-//                 nums[ri++] = nums[i];
-        
-//         return ri;
-        
-        
         int ri = 0;
         for(int i=0; i<nums.length; i++)
             if(nums[i]!=nums[ri])
                 nums[++ri] = nums[i];
         
-        return ri+1;
+        return ++ri;
     }
     
     public int optimalOne(int[] nums) {
