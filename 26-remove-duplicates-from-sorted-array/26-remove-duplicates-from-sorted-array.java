@@ -1,19 +1,15 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         
-        
         int ri = 1;
-        for(int i=0; i<nums.length; i++){
-            if(nums[i]!=nums[ri-1]){
+        for(int i=0; i<nums.length; i++)
+            if(nums[i]!=nums[ri-1])
                 nums[ri++] = nums[i];
-                //cur = nums[i];
-            }
-        }
         
         return ri;
     }
     
-      public int optimalOne(int[] nums) {
+    public int optimalOne(int[] nums) {
         
         HashSet<Integer> hs = new HashSet<>();
         for(int i=0; i<nums.length; i++)
