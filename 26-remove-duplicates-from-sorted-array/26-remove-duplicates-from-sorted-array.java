@@ -1,8 +1,19 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         
-        //Store array elements in the set
-        //Loop through the arr and check if it is present in the set or not and cur is not euqal to this then add it to arr
+        int cur = nums[0];
+        int ri = 1;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i]!=cur){
+                nums[ri++] = nums[i];
+                cur = nums[i];
+            }
+        }
+        
+        return ri;
+    }
+    
+      public int optimalOne(int[] nums) {
         
         HashSet<Integer> hs = new HashSet<>();
         for(int i=0; i<nums.length; i++)
@@ -19,6 +30,7 @@ class Solution {
         
         return hs.size();
     }
+    
     
     public int naive(int[] nums){
         int count = 0;
