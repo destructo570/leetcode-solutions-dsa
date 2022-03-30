@@ -1,35 +1,36 @@
 class MinStack {
-    int min=Integer.MAX_VALUE;
-    LinkedList<Integer> ll = new LinkedList<>();
-
-    public MinStack() {
-
-    }
-
+    Node head;
+    public MinStack() {}
+    
     public void push(int val) {
-        ll.addLast(val);
-        if(val<min || ll.isEmpty())
-            min=val;
-    }
-
-    public void pop() {
-        int item=ll.removeLast();
-        if(item==min){
-            int newMin = Integer.MAX_VALUE;
-            for (int num:ll){
-                if(num<newMin)newMin=num;
-            }
-            min=newMin;
+        if(head==null){
+            head = new Node(val, val, null);
+        }else{
+            head = new Node(val, Math.min(head.min, val), head);
         }
     }
-
-    public int top() {
-        return ll.getLast();
+    
+    public void pop() {
+        head=head.next;
     }
-
+    
+    public int top() {
+        return head.val;
+    }
+    
     public int getMin() {
-        if(ll.isEmpty()) return 0;
-        return min;
+        return head.min;
+    }
+    
+    private class Node{
+        int val;
+        int min;
+        Node next;
+        private Node(int val, int min, Node next){
+            this.val=val;
+            this.min=min;
+            this.next=next;
+        }
     }
 }
 /**
