@@ -17,8 +17,10 @@ class Solution {
         
         for(int num: nums){
             
-            if(num1==num) count1++;
-            else if(num2==num) count2++;
+            if(num1==num) 
+                count1++;
+            else if(num2==num) 
+                count2++;
             else if(count1==0){
                 num1=num;
                 count1++;
