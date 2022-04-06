@@ -11,13 +11,9 @@ class Solution {
         for(int i=1; i<=nums.length; i++)
             prefixSum[i] = nums[i-1] + prefixSum[i-1];
 
-        for(int i=0; i<nums.length; i++){
-            int leftSum = prefixSum[i];
-            int rightSum = prefixSum[nums.length]-prefixSum[i+1];
-
-
-            if(leftSum==rightSum) return i;
-        }
+        for(int i=0; i<nums.length; i++)
+            if(prefixSum[i]==(prefixSum[nums.length]-prefixSum[i+1])) return i;
+        
         return -1;
     }
     
