@@ -1,6 +1,19 @@
 class Solution {
     public int findMiddleIndex(int[] nums) {
-        return bruteForce(nums);
+        return optimalOne(nums);
+    }
+    
+    public int optimalOne(int[] nums) {
+        
+        int[] prefixSum = new int[nums.length+1];
+
+        for(int i=1; i<=nums.length; i++)
+            prefixSum[i] = nums[i-1] + prefixSum[i-1];
+
+        for(int i=0; i<nums.length; i++)
+            if(prefixSum[i]==(prefixSum[nums.length]-prefixSum[i+1])) return i;
+        
+        return -1;
     }
     
     public int bruteForce(int[] nums) {
