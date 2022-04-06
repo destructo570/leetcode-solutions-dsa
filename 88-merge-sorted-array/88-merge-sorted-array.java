@@ -1,6 +1,11 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
+        mergeCreateNew(nums1, m, nums2, n);
+    }
+    
+    public void mergeCreateNew(int[] nums1, int m, int[] nums2, int n) {
         
+
         int[] arr = new int[m+n];
         
         int i=0; int k=0; int r=0;
