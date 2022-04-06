@@ -1,6 +1,29 @@
 class Solution {
     public int pivotIndex(int[] nums) {
         
+        return optimalOne(nums);
+    }
+    
+    public int optimalOne(int[] nums) {
+        
+        int[] prefixSum = new int[nums.length+1];
+
+        for(int i=1; i<=nums.length; i++)
+            prefixSum[i] = nums[i-1] + prefixSum[i-1];
+
+        for(int i=0; i<nums.length; i++){
+            int leftSum = prefixSum[i];
+            int rightSum = prefixSum[nums.length]-prefixSum[i+1];
+
+
+            if(leftSum==rightSum) return i;
+        }
+        return -1;
+    }
+    
+    
+    public int bruteForce(int[] nums) {
+        
         //Loop through the array and select an index
         //calculate the sum of all elements to the left of the index and store it in leftSum
         //calculate the sum of all elements to the right of the index and store it in rightSum
