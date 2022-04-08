@@ -17,7 +17,7 @@ class Solution {
         return true;
     }
     
-     public static boolean isAlphanumeric(char c){
+     public boolean isAlphanumeric(char c){
         return Character.isDigit(c) || Character.isAlphabetic(c);
     }
     
