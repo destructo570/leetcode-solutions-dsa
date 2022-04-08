@@ -1,5 +1,13 @@
 class Solution {
     public boolean isPalindrome(String s) {
+        return isPalindromeOne(s);
+    }
+    
+     public boolean isAlphanumeric(char c){
+        return Character.isDigit(c) || Character.isAlphabetic(c);
+    }
+    
+    public boolean isPalindromeTwo(String s) {
         StringBuilder res = new StringBuilder();
         for(int i=0; i<s.length(); i++){
             if(isAlphanumeric(s.charAt(i))){
@@ -15,10 +23,6 @@ class Solution {
         }
 
         return true;
-    }
-    
-     public boolean isAlphanumeric(char c){
-        return Character.isDigit(c) || Character.isAlphabetic(c);
     }
     
     
