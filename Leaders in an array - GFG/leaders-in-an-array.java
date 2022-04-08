@@ -51,11 +51,9 @@ class Solution{
         ArrayList<Integer> result = new ArrayList<>();
 
         for(int i=n-1; i>=0; i--){
-            int max = Math.max(curMax, arr[i]);
+            curMax = Math.max(curMax, arr[i]);
             if(arr[i] >= curMax)
-                result.add(max);
-
-            curMax = max;
+                result.add(curMax);
         }
         
         ArrayList<Integer> result2 = new ArrayList<>();
