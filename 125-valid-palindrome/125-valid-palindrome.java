@@ -3,7 +3,7 @@ class Solution {
         StringBuilder res = new StringBuilder();
         for(int i=0; i<s.length(); i++){
             if(isAlphanumeric(s.charAt(i))){
-                if (s.charAt(i)>='A' && s.charAt(i)<='Z')
+                if (Character.isUpperCase(s.charAt(i)))
                     res.append((char)( (int)s.charAt(i)+32));
                 else
                     res.append(s.charAt(i));
