@@ -57,7 +57,7 @@ class Solution
 {
     int getMiddle(Node head)
     {
-        return getMiddleOne(head);
+        return getMiddleTwo(head);
     }
     
     int getMiddleOne(Node head){
@@ -81,6 +81,14 @@ class Solution
     }
     
     int getMiddleTwo(Node head){
-        return 0;
+        Node slow = head;
+        Node fast = head;
+        
+        while(fast != null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
+            if(fast!=null) fast=fast.next;
+        }
+        return slow.data;
     }
 }
