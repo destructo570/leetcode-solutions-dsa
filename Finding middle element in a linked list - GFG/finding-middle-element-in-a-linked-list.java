@@ -71,10 +71,11 @@ class Solution
         }
         
         cur=head;
-        int mid = count/2;
-        while(mid!=0){
+        count=count/2;
+        
+        while(count!=0){
             cur=cur.next;
-            mid--;
+            count--;
         }
         return cur.data;
     }
