@@ -14,6 +14,39 @@ class Solution {
         //Find longer number and store it int num1
         ListNode num1 = l1;
         ListNode num2 = l2;
+        
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        int carry=0;
+        
+        while(num1!=null || num2!=null || carry!=0){
+            int a = num1 == null ? 0 : num1.val;
+            int b = num2 == null ? 0 : num2.val;
+            int sum = a + b + carry;
+            
+            if(sum>9){
+                carry=1;
+                tail.next = new ListNode(sum%10);
+                tail = tail.next;
+            }else{
+                carry=0;
+                tail.next = new ListNode(sum);
+                tail = tail.next;
+            }
+            
+            num1 = num1 == null ? null : num1.next;
+            num2 = num2 == null ? null : num2.next;
+        }
+        
+        return head.next;
+    }
+    
+    
+     public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        
+        //Find longer number and store it int num1
+        ListNode num1 = l1;
+        ListNode num2 = l2;
         ListNode head = null;
         
         while(num1!=null || num2!=null){
