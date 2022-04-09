@@ -57,19 +57,29 @@ class Solution
 {
     int getMiddle(Node head)
     {
+        return getMiddleOne(head);
+    }
+    
+    int getMiddleOne(Node head){
         int count=0;
-        Node current=head;
         
-        while(current!=null){
+        Node cur = head;
+        
+        while(cur!=null){
             count++;
-            current=current.next;
+            cur=cur.next;
         }
         
+        cur=head;
         int mid = count/2;
-        current=head;
-        for(int i=0; i<mid; i++){
-            current=current.next;
+        while(mid!=0){
+            cur=cur.next;
+            mid--;
         }
-        return current.data;
+        return cur.data;
+    }
+    
+    int getMiddleTwo(Node head){
+        return 0;
     }
 }
