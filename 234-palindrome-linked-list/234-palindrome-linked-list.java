@@ -10,6 +10,27 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+        
+        return isPalindromeUsingNum(head);
+    }
+    
+    public boolean isPalindromeUsingNum(ListNode head) {
+        int num1 = 0;
+        int num2 = 0;
+        int s = 1;
+        ListNode current = head;
+
+        while(current!=null){
+            num1 = (num1*10) + current.val;
+            num2 = num2 + (current.val*s);
+            s*=10;
+            current = current.next;
+        }
+
+        return num1 == num2;
+    }
+    
+    public boolean isPalindromeUsingStack(ListNode head) {
         Stack<Integer> st = new Stack<>();
         
         ListNode cur = head;
