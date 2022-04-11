@@ -1,64 +1,57 @@
 class MyHashMap {
+    //Load factor = 10000/size = 0.75
+    List<int[]>[] lists; //using List<List<int[]>> lists is fine as well.
+    int size = 13000;
+
+    //O(size)
+    /** Initialize your data structure here. */
+    public MyHashMap() {
+        lists = new ArrayList[size];
+        for(int i=0; i<lists.length; i++)
+            lists[i] = new ArrayList<>(); //don't use linkedlist in my version which makes put() O(L^2)
+    }
     
-    LinkedList<Entry>[] hash = new LinkedList[10];
-
-
+    public int getHashcode(int key)
+    {
+        return key%size;
+    }
+    
+    //O(L)
+    /** value will always be non-negative. */
     public void put(int key, int value) {
-        int index = getIndex(key);
-
-        if(hash[index]==null){
-            LinkedList<Entry> ll = new LinkedList<>();
-            ll.add(new Entry(key, value));
-            hash[index] = ll;
-        }else{
-            Entry e = getEntry(key);
-            if(e != null)
-                e.val = value;
-            else hash[index].add(new Entry(key, value));
-        }
-    }
-
-    public int get(int key) {
-        Entry e = getEntry(key);
-        return e==null?-1:e.val;
-    }
-
-    public void remove(int key) {
-        Entry e = getEntry(key);
-        if(e!=null) hash[getIndex(key)].remove(e);
-    }
-
-    public int getIndex(int key){
-        return key%hash.length;
-    }
-
-    public Entry getEntry(int key){
-        LinkedList<Entry> ll = hash[getIndex(key)];
-
-        if(ll != null) {
-            for (Entry listElement : ll) {
-                if (listElement.key == key)
-                    return listElement;
+        int index = getHashcode(key);
+        for(int i=0; i<lists[index].size(); i++)
+        {
+            if(lists[index].get(i)[0]==key)
+            {
+                lists[index].get(i)[1]=value;
+                return;
             }
         }
-        return null;
+        lists[index].add(new int[]{key, value});
     }
-
-    private class Entry{
-        int key;
-        int val;
-
-        public Entry(int key, int val){
-            this.key = key;
-            this.val = val;
+    
+    //O(L)
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
+    public int get(int key) {
+        int index = getHashcode(key);
+        for(int i=0; i<lists[index].size(); i++)
+        {
+            if(lists[index].get(i)[0]==key)
+                return lists[index].get(i)[1];
         }
+        return -1;    
+    }
+    
+    //O(L)
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
+    public void remove(int key) {
+        int index = getHashcode(key);
+        for(int i=0; i<lists[index].size(); i++)
+        {
+            if(lists[index].get(i)[0]==key)
+                lists[index].remove(i);
+        }
+        return;
     }
 }
-
-/**
- * Your MyHashMap object will be instantiated and called as such:
- * MyHashMap obj = new MyHashMap();
- * obj.put(key,value);
- * int param_2 = obj.get(key);
- * obj.remove(key);
- */
