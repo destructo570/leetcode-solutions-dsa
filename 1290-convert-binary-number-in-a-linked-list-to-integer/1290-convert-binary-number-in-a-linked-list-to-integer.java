@@ -11,16 +11,15 @@
 class Solution {
     public int getDecimalValue(ListNode head) {
         
-        int count = 0;
         int power = 0;
         int sum = 0;
         ListNode cur = head;
         while(cur!=null){
-            count++;
+            power++;
             cur=cur.next;
         }
         
-        power = count-1;
+        power--;
         cur=head;
         
         while(cur!=null){
