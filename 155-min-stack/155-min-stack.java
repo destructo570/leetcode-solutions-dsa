@@ -1,17 +1,24 @@
 class MinStack {
-    Node head;
+    
+    ListNode head = null;
+    
     public MinStack() {}
     
     public void push(int val) {
         if(head==null){
-            head = new Node(val, val, null);
+            head = new ListNode(val, val, null);
+            
         }else{
-            head = new Node(val, Math.min(head.min, val), head);
+            ListNode n = new ListNode(val, Math.min(head.min, val), null);
+            n.next=head;
+            head=n;
         }
     }
     
     public void pop() {
-        head=head.next;
+        ListNode n = head;
+        head = head.next;
+        n.next=null;
     }
     
     public int top() {
@@ -22,17 +29,19 @@ class MinStack {
         return head.min;
     }
     
-    private class Node{
+    private class ListNode{
         int val;
         int min;
-        Node next;
-        private Node(int val, int min, Node next){
+        ListNode next;
+        
+        public ListNode(int val, int min, ListNode next){
             this.val=val;
             this.min=min;
             this.next=next;
         }
     }
 }
+
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();
