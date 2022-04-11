@@ -2,36 +2,29 @@ class MyQueue {
     
     Stack<Integer> enq = new Stack<>();
     Stack<Integer> deq = new Stack<>();
-    int top;
+    
     public MyQueue() {}
     
     public void push(int x) {
-        if(enq.isEmpty())
-            top=x;
         enq.push(x);
     }
     
     public int pop() {
-        int item = -1;
+        peek();
         
-        while(!enq.isEmpty())
-            deq.push(enq.pop());
-        
-        item = deq.pop();
-        top = deq.isEmpty() ? 0 : deq.peek();
-        
-        while(!deq.isEmpty())
-            enq.push(deq.pop());
-        
-        return item;
+        return deq.pop();
     }
     
     public int peek() {
-        return top;
+        if(deq.isEmpty())
+             while(!enq.isEmpty())
+                deq.push(enq.pop());
+        
+        return deq.peek();
     }
     
     public boolean empty() {
-        return enq.isEmpty();
+        return enq.isEmpty() && deq.isEmpty();
     }
 }
 
