@@ -10,6 +10,21 @@
  */
 class Solution {
     public int getDecimalValue(ListNode head) {
+       
+        int result=0;
+        
+        ListNode cur = head;
+        
+        while(cur!=null){
+            result = (result*2)+cur.val;
+            cur=cur.next;
+        }
+        
+        return result;
+        
+    }
+    
+     public int getDecimalValueNaive(ListNode head) {
         
         int power = 0;
         int sum = 0;
