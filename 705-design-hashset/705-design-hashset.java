@@ -18,11 +18,6 @@ class MyHashSet {
         }
     }
 
-    public int get(int key) {
-        Integer i = getObject(key);
-        return i==null?-1:i;
-    }
-
     public void remove(int key) {
         Integer i = getObject(key);
         if(i!=null) hash[getIndex(key)].remove(i);
