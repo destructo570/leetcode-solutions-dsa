@@ -11,11 +11,20 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        //Store the traversed node in a hashmap
-        //Loop one list and store all nodes in the hashset
-        //Loop second list and check if node is preesnt in the hs
-        //If present return the node
-        //Else return null
+               
+        ListNode a = headA;
+        ListNode b = headB;
+        
+        while(a!=b){
+            a=a==null?headB:a.next;
+            b=b==null?headA:b.next;
+        }
+        
+        return a;
+    }
+    
+    
+    public ListNode getIntersectionNodeByHashing(ListNode headA, ListNode headB) {
         
         HashSet<ListNode> hs = new HashSet<>();
         
@@ -37,4 +46,7 @@ public class Solution {
         
         return null;
     }
+    
+    
+    
 }
