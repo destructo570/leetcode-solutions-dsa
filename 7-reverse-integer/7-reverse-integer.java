@@ -7,7 +7,6 @@ class Solution {
             long tmp = x%10;
             result = (result*10)+tmp;
             x=x/10;
-            
         }
         
         if(result>Integer.MAX_VALUE || result<Integer.MIN_VALUE)
