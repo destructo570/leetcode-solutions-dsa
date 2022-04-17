@@ -15,8 +15,4 @@ class Solution {
         
         return (int)result;
     }
-    
-    public long getReverse(long x){
-        return -x;
-    }
 }
