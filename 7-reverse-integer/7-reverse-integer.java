@@ -1,14 +1,8 @@
 class Solution {
     public int reverse(int x) {
-        boolean flag = false;
+        boolean flag = x<0;
         long num = (long)x;
         long result = 0;
-        
-        if(x<0){
-            flag=true;
-            num = getReverse(x);
-        }
-        
         
         while(num!=0){
             long tmp = num%10;
@@ -16,11 +10,6 @@ class Solution {
             num=num/10;
             
         }
-        
-        
-        if(flag)
-            result=getReverse(result);
-        
         
         if(result>Integer.MAX_VALUE || result<Integer.MIN_VALUE)
             return 0;
