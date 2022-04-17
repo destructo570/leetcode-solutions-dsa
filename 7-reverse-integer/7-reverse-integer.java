@@ -1,13 +1,12 @@
 class Solution {
     public int reverse(int x) {
         boolean flag = x<0;
-        long num = (long)x;
         long result = 0;
         
-        while(num!=0){
-            long tmp = num%10;
+        while(x!=0){
+            long tmp = x%10;
             result = (result*10)+tmp;
-            num=num/10;
+            x=x/10;
             
         }
         
