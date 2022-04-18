@@ -4,7 +4,7 @@ class Solution {
         return optimal1(haystack, needle);
     }
     
-        public static int naive(String haystack, String needle) {
+    public static int naive(String haystack, String needle) {
 
         int ptr=0;
         if(haystack.length()<needle.length()) return -1;
@@ -34,7 +34,7 @@ class Solution {
     
         for(int i=0; i<haystack.length(); i++){
             for(int j=0; j<needle.length(); j++){
-                if (i + needle.length() > haystack.length()) break;
+                if(i + needle.length() > haystack.length()) break;
                 
                 if(haystack.charAt(i+j) != needle.charAt(j)) break;
                 
