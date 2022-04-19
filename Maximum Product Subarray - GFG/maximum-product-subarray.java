@@ -27,18 +27,36 @@ class Solution {
     // Function to find maximum product subarray
     long maxProduct(int[] arr, int n) {
         
-        long result=Long.MIN_VALUE;
+        long result=Integer.MIN_VALUE;
+        long product=1;
         
         for(int i=0; i<n; i++){
-            long max=1;
-            for(int j=i; j<n; j++){
-                max = max*arr[j];
-                //if(tmp>max)max=tmp;
-                if(max>result)result=max;
-
-            }
-            
+            product=product*arr[i];
+            result = Math.max(product, result);
+            if(product==0)product=1;
+        }
+        product=1;
+        for(int i=n-1; i>=0; i--){
+            product=product*arr[i];
+            result = Math.max(product, result);
+            if(product==0)product=1;
         }
         return result;
     }
 }
+
+//     long maxProductNaive(int[] arr, int n) {
+        
+//         long result=Long.MIN_VALUE;
+        
+//         for(int i=0; i<n; i++){
+//             long max=1;
+//             for(int j=i; j<n; j++){
+//                 max = max*arr[j];
+//                 if(max>result)result=max;
+//             }
+//         }
+//         return result;
+        
+//     }
+// }
