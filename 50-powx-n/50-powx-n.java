@@ -16,13 +16,9 @@ class Solution {
     public double getPow(double num, int pow){
         if(pow == 0) return 1;
         
-        double result = 1;
-        
-        if(pow%2==0){
-            result *= getPow(num*num, pow/2);
-        }else{
-            result *= getPow(num*num, pow/2)*num;
-        }
-        return result;
+        if(pow%2==0)
+            return getPow(num*num, pow/2);
+        else
+            return getPow(num*num, pow/2)*num; 
     }
 }
