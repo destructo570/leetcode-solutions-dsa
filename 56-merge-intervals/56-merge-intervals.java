@@ -1,26 +1,21 @@
 class Solution {
-    public static int[][] merge(int[][] intervals) {
+    public static int[][] merge(int[][] arr) {
         
-        quickSort(intervals, 0, intervals.length-1);
-        int row=intervals.length;
-        int col=intervals[0].length;
-        
-        //if(row==1) return intervals;
+        quickSort(arr, 0, arr.length-1);
+        int row=arr.length;
+        int col=arr[0].length;
 
         int j=0;
         for(int k=0; k<row; k++){
-            int[] a = intervals[j];
-            int[] b = intervals[k];
-            
-            if(a[0]>=b[0])
-                intervals[j] = new int[]{b[0], Math.max(a[1], b[1])};
-            else if(a[1]>=b[0])
-                intervals[j] = new int[]{a[0], Math.max(a[1], b[1])};
+            if(arr[j][0]>=arr[k][0])
+                arr[j] = new int[]{arr[k][0], Math.max(arr[j][1], arr[k][1])};
+            else if(arr[j][1]>=arr[k][0])
+                arr[j] = new int[]{arr[j][0], Math.max(arr[j][1], arr[k][1])};
             else
-                intervals[++j] = intervals[k];
+                arr[++j] = arr[k];
         }
 
-        return Arrays.copyOfRange(intervals, 0, j+1);
+        return Arrays.copyOfRange(arr, 0, j+1);
     }
     
     
