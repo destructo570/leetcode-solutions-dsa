@@ -1,7 +1,7 @@
 class Solution {
     public static int[][] merge(int[][] arr) {
         
-        quickSort(arr, 0, arr.length-1);
+        Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));
         int row=arr.length;
         int col=arr[0].length;
 
