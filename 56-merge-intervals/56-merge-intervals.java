@@ -1,5 +1,7 @@
 class Solution {
     public static int[][] merge(int[][] arr) {
+        if (arr.length <= 1)
+			return arr;
         
         Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));
         int row=arr.length;
@@ -16,40 +18,5 @@ class Solution {
         }
 
         return Arrays.copyOfRange(arr, 0, j+1);
-    }
-    
-    
-
-    
-    public static void quickSort(int[][] arr, int l, int r){
-        if(l<r) {
-        int pi = partitionIndex(arr, l, r);
-        quickSort(arr, l, pi-1);
-        quickSort(arr, pi+1, r);
-        }
-    }
-
-    public static int partitionIndex(int[][] arr, int l, int r){
-        int[] pivot = arr[r];
-        int i=l;
-        int j=l;
-        while (i<=r){
-            if(arr[i][0]<pivot[0]){
-                swap(arr, i, j);
-                j++;
-            }if(arr[i][0]==pivot[0] && arr[i][1]<=pivot[1]){
-                swap(arr, i, j);
-                j++;
-            }
-            i++;
-        }
-
-        return j-1;
-    }
-
-    public static void swap(int[][] arr, int i, int j){
-        int[] tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
     }
 }
