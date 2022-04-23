@@ -22,10 +22,7 @@ class Solution {
 
         }
 
-        int[][] r2 = new int[j+1][col];
-        for(int i=0; i<=j; i++)
-            r2[i] = intervals[i];
-        return r2;
+        return Arrays.copyOfRange(intervals, 0, j+1);
     }
     
     
