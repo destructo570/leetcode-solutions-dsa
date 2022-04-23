@@ -5,7 +5,7 @@ class Solution {
         int row=intervals.length;
         int col=intervals[0].length;
         
-        if(row==1) return intervals;
+        //if(row==1) return intervals;
 
         int j=0;
         for(int k=0; k<row; k++){
