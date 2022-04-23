@@ -12,15 +12,12 @@ class Solution {
             int[] a = intervals[j];
             int[] b = intervals[k];
             
-            if(a[0]>=b[0]){
-                int[] r = new int[]{b[0], Math.max(a[1], b[1])};
-                intervals[j] = r;
-            }else if(a[1]>=b[0]){
-                int[] r = new int[]{a[0], Math.max(a[1], b[1])};
-                intervals[j] = r;
-            }else{
+            if(a[0]>=b[0])
+                intervals[j] = new int[]{b[0], Math.max(a[1], b[1])};
+            else if(a[1]>=b[0])
+                intervals[j] = new int[]{a[0], Math.max(a[1], b[1])};
+            else
                 intervals[++j] = intervals[k];
-            }
             k++;
 
         }
