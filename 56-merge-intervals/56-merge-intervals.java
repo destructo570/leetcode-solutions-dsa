@@ -7,8 +7,8 @@ class Solution {
         
         if(row==1) return intervals;
 
-        int j=0; int k=0;
-        while(k<row){
+        int j=0;
+        for(int k=0; k<row; k++){
             int[] a = intervals[j];
             int[] b = intervals[k];
             
@@ -18,8 +18,6 @@ class Solution {
                 intervals[j] = new int[]{a[0], Math.max(a[1], b[1])};
             else
                 intervals[++j] = intervals[k];
-            k++;
-
         }
 
         return Arrays.copyOfRange(intervals, 0, j+1);
