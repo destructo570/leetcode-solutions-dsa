@@ -1,6 +1,6 @@
 class Solution {
     public static int[][] merge(int[][] arr) {
-        if (arr.length <= 1) return arr;
+        //if (arr.length <= 1) return arr;
         
         Arrays.sort(arr, (i1, i2) -> Integer.compare(i1[0], i2[0]));
         int row=arr.length;
