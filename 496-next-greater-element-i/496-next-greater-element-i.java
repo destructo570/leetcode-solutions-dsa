@@ -1,6 +1,23 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        return naive(nums1, nums2);
+        return optimal1(nums1, nums2);
+    }
+    
+    public int[] optimal1(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        Stack<Integer> st = new Stack<>();
+        
+        for(int num:nums2){
+            while(!st.isEmpty() && st.peek()<num)
+                hm.put(st.pop(), num);
+            st.push(num);
+        }
+        
+        for(int i=0; i<nums1.length; i++){
+            nums1[i] = hm.getOrDefault(nums1[i], -1);
+        }
+        
+        return nums1;
     }
     
     public int[] naive(int[] nums1, int[] nums2) {
@@ -17,7 +34,6 @@ class Solution {
                             break;
                         }
                     }    
-                    
                     if(!flag) result[ptr++] = -1;
                 }
             }
