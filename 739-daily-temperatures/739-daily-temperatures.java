@@ -6,9 +6,10 @@ class Solution {
     public int[] optimalTwo(int[] arr) {
         int[] result = new int[arr.length];
         Stack<Integer> st = new Stack<>();
+        int tmp =0;
         for(int i=0; i<arr.length; i++){
             while(!st.isEmpty() && arr[i]>arr[st.peek()]){
-                int tmp = st.pop();
+                tmp = st.pop();
                 result[tmp] = i-tmp;
             }
             st.push(i);
