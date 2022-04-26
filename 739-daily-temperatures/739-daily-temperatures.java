@@ -3,6 +3,18 @@ class Solution {
         return optimal(temperatures);
     }
     
+    public int[] optimalTwo(int[] arr) {
+        int[] result = new int[arr.length];
+        Stack<Integer> st = new Stack<>();
+        int ptr=0;
+        for(int i=0; i<arr.length; i++){
+            while(!st.isEmpty() && arr[i]>arr[st.peek()])
+                result[ptr++] = i- st.pop();
+            st.push(i);
+        }
+        return result;
+    }
+    
     public int[] optimal(int[] arr) {
         int[] result = new int[arr.length];
         HashMap<Integer, Integer> hm = new HashMap<>();
