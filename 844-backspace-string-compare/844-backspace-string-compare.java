@@ -1,9 +1,30 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
+
+        StringBuilder a1 = new StringBuilder();
+        StringBuilder a2 = new StringBuilder();
+        
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)=='#'){
+                if(a1.toString().length()>0)
+                    a1.deleteCharAt(a1.toString().length() - 1);
+            }else a1.append(s.charAt(i));
+        }
+        
+        for(int i=0; i<t.length(); i++){
+            if(t.charAt(i)=='#'){
+                if(a2.toString().length()>0)
+                    a2.deleteCharAt(a2.toString().length() - 1);
+            }else a2.append(t.charAt(i));
+        }
+        
+        return a1.toString().equals(a2.toString());
+    }
+    
+        public boolean backspaceCompareStacks(String s, String t) {
         
         Stack<Character> s1 = new Stack<>();
         Stack<Character> s2 = new Stack<>();
-        
         
         for(int i=0; i<s.length(); i++){
             if(s.charAt(i)=='#'){
