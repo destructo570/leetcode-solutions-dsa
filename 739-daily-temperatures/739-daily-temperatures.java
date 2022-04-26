@@ -1,6 +1,23 @@
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
-        return naive(temperatures);
+        return optimal(temperatures);
+    }
+    
+    public int[] optimal(int[] arr) {
+        int[] result = new int[arr.length];
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        Stack<Integer> st = new Stack<>();
+        for(int i=0; i<arr.length; i++){
+            while(!st.isEmpty() && arr[i]>arr[st.peek()]){
+                hm.put(st.pop(), i);
+            }
+            st.push(i);
+        }
+       
+        for(int i=0; i<result.length; i++){
+            result[i] = (hm.get(i)!=null?hm.get(i)-i:0);
+        }
+        return result;
     }
     
     public int[] naive(int[] arr) {
