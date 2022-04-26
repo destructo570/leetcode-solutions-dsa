@@ -1,16 +1,15 @@
 class Solution {
-    public int[] dailyTemperatures(int[] arr) {
-        int[] result = new int[arr.length];
-        Stack<Integer> st = new Stack<>();
-        
-        for(int i=0; i<arr.length; i++){
-            while(!st.isEmpty() && arr[i]>arr[st.peek()]){
-                int tmp = st.pop();
-                result[tmp] = i-tmp;
-            }
-            st.push(i);
+    public int[] dailyTemperatures(int[] temperatures) {
+    Stack<Integer> stack = new Stack<>();
+    int[] ret = new int[temperatures.length];
+    for(int i = 0; i < temperatures.length; i++) {
+        while(!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+            int idx = stack.pop();
+            ret[idx] = i - idx;
         }
-        return result;
+        stack.push(i);
+    }
+    return ret;
     }
     
     public int[] optimalTwo(int[] arr) {
