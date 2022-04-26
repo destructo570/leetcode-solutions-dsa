@@ -1,6 +1,6 @@
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
-        return optimal(temperatures);
+        return optimalTwo(temperatures);
     }
     
     public int[] optimalTwo(int[] arr) {
@@ -8,8 +8,10 @@ class Solution {
         Stack<Integer> st = new Stack<>();
         int ptr=0;
         for(int i=0; i<arr.length; i++){
-            while(!st.isEmpty() && arr[i]>arr[st.peek()])
-                result[ptr++] = i- st.pop();
+            while(!st.isEmpty() && arr[i]>arr[st.peek()]){
+                int tmp = st.pop();
+                result[tmp] = i-tmp;
+            }
             st.push(i);
         }
         return result;
