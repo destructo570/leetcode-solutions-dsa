@@ -94,17 +94,16 @@ class GfG
 	        count++;
 	        prev=curr;
 	        curr=curr.next;
+	        
+	        if(count==x){
+	            prev.next = curr.next;
+	            curr.next = null;
+	            return head;
+	        }
 	    }
+	   prev=curr.next;
+	   curr.next = null;
 	    
-	    if(prev!=null) {
-	        prev.next = curr.next;
-	        curr.next = null;
-	    }else{
-	        prev=curr.next;
-	        curr.next = null;
-	        return prev;
-	    }
-	    
-	    return head;
+	    return prev;
     }
 }
