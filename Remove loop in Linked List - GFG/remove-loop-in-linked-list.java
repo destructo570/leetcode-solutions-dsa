@@ -115,7 +115,7 @@ class Solution
         //     fast=fast.next;
         //     if(slow==fast) break;
         // }
-        if(head==null) return;
+
         Node prev = null;
         Node cur = head;
         
