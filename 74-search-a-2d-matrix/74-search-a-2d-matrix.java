@@ -1,11 +1,5 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        
-//         for(int i=0; i<matrix.length; i++){
-//             if(binarySearch(matrix[i], target)) return true;
-//         }
-        
-//         return false;
         return searchMatrixOptimal(matrix, target);
     }
     
