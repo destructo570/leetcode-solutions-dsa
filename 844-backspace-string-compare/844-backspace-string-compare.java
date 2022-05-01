@@ -21,7 +21,7 @@ class Solution {
         return a1.toString().equals(a2.toString());
     }
     
-        public boolean backspaceCompareStacks(String s, String t) {
+    public boolean backspaceCompareStacks(String s, String t) {
         
         Stack<Character> s1 = new Stack<>();
         Stack<Character> s2 = new Stack<>();
