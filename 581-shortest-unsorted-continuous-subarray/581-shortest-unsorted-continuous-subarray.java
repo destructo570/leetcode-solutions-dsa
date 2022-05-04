@@ -1,5 +1,10 @@
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
+        
+        return naive(nums);
+    }
+    
+    public int naive(int[] nums) {
         int[] arr = Arrays.copyOfRange(nums, 0, nums.length);;
         Arrays.sort(arr);
         int count=0;
