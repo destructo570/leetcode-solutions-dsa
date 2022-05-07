@@ -11,7 +11,6 @@
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         
-        //Find longer number and store it int num1
         ListNode num1 = l1;
         ListNode num2 = l2;
         
