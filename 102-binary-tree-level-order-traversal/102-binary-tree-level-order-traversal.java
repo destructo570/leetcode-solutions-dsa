@@ -15,23 +15,23 @@
  */
 class Solution {
         public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans=new ArrayList<>();
-        compute(ans,root,0);
-        return ans;
+        List<List<Integer>> result = new ArrayList<>();
+        traverse(root, result, 0);
+        return result;
     }
     
-    public void compute(List<List<Integer>> ans,TreeNode curr,int level)
-    {
-        if(curr==null) return;
+    public void traverse(TreeNode root, List<List<Integer>> result, int level){
+        if(root==null) return;
         
-        if(ans.size()==level) 
-            ans.add(new ArrayList<Integer>());
+        if(result.size()==level)
+            result.add(new ArrayList<Integer>());
         
-        ans.get(level).add(curr.val);
-        
-        compute(ans,curr.left,level+1);
-        compute(ans,curr.right,level+1);
+        result.get(level).add(root.val);
+        traverse(root.left, result, level+1);
+        traverse(root.right, result, level+1);
     }
+    
+
 //     public List<List<Integer>> levelOrder(TreeNode root) {
 //         List<List<Integer>> result = new ArrayList<>();
 //         for(int i=0; i<=height(root); i++){
