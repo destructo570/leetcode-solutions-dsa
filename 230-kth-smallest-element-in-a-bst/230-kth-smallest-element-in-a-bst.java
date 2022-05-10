@@ -36,13 +36,6 @@ class Solution {
         return result.get(k-1);
     }
     
-    public void inOrderTraversal(TreeNode root, List<Integer> result) {
-        if(root==null) return;
-        
-        inOrderTraversal(root.left, result);
-        result.add(root.val);
-        inOrderTraversal(root.right, result);
-    }
     
 // ============  Using Recursion
 //     public int kthSmallest(TreeNode root, int k) {
