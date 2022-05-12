@@ -8,17 +8,15 @@ class Solution {
             if(arr[mid]==target){
                 return mid;
             }else if(arr[left]<=arr[mid]){
-                if(target>=arr[left] && target<arr[mid]){
+                if(target>=arr[left] && target<arr[mid])
                     right=mid-1;
-                }else{
+                else
                     left=mid+1;
-                }
             }else{
-                if(target>arr[mid] && target<=arr[right]){
+                if(target>arr[mid] && target<=arr[right])
                     left=mid+1;
-                }else{
+                else
                     right=mid-1;
-                }
             }
         }
         return -1;
