@@ -2,7 +2,7 @@ class Solution {
     public int search(int[] arr, int target) {
         int left=0; int right=arr.length-1;
         
-        while(left<right){
+        while(left<=right){
             int mid=(left+right)/2;
             
             if(arr[mid]==target){
@@ -21,6 +21,6 @@ class Solution {
                 }
             }
         }
-        return arr[left]==target?left:-1;
+        return -1;
     }
 }
