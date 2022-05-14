@@ -8,12 +8,9 @@ class Solution {
         int result = 0;
 
         for(int i=1; i<=Math.sqrt(x); i++){
-            if(i*i > result){
-                if(i+1>x/(i+1)){
-                    result = i;
-                    return result;
-                }else  result = i;
-            }
+            if(i*i > result)
+                result = i;
+                if(i+1>x/(i+1)) break;
         }
         return result;
     }
