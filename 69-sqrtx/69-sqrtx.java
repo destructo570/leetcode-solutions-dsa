@@ -4,15 +4,11 @@ class Solution {
     }
     
     public int bruteForce(int x) {
-       int num=x;
-        int result = 0;
+       if(x==0) return 0;
 
-        for(int i=1; i<=Math.sqrt(x); i++){
-            if(i*i > result)
-                result = i;
-                if(i+1>x/(i+1)) break;
-        }
-        return result;
+        for(int i=1; i<=Math.sqrt(x); i++)
+            if(i*i <= x && i+1>x/(i+1)) return i;
+        return 0;
     }
     
     public int binarySearch(int x) {
