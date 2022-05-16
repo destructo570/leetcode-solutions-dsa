@@ -6,13 +6,13 @@ class Solution {
     public boolean searchMatrixOptimal(int[][] matrix, int target) {
         int m=0; int n=matrix[0].length-1;
         
-        while(m<matrix.length){
-            if(matrix[m][n]>=target){
-                for(int i=n; i>=0; i--)
-                    if(matrix[m][i]==target) return true;
-                return false;
-            }else
-                m++;
+        while(m<matrix.length && n>=0){
+            if(matrix[m][n]==target)
+                return true;
+            else if(matrix[m][n]>target)
+                n--;
+            else 
+                m++;   
         }
         return false;
     }
