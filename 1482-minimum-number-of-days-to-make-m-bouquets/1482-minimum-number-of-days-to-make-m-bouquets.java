@@ -18,14 +18,10 @@ class Solution {
         int bouquets=0;
         int flowers=0;
         for(int bloom:bloomDay){
-            
-            // if(bloom>days) flowers=0;
-            // else{
-            //     bouquets+= (flowers+1)/k;
-            //     flowers= (flowers+1)%k;
-            // }
-            if(bloom<=days) flowers++;
-            else flowers=0;
+            if(bloom<=days) 
+                flowers++;
+            else 
+                flowers=0;
             
             if(flowers==k){
                 bouquets++;
