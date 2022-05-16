@@ -1,6 +1,6 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
-        int left=min(bloomDay), right=max(bloomDay);
+        int left=1, right=max(bloomDay);
         
         while(left<right){
             int mid=left+(right-left)/2;
@@ -15,21 +15,15 @@ class Solution {
     public boolean feasible(int[] bloomDay, int m, int k, int days){
         int count=0;
         
-        
         int adj=0;
         for(int bloom:bloomDay){
-            if(bloom<=days){
-                adj++;
-            }else{
-                adj=0;
-            }
+            if(bloom<=days) adj++;
+            else adj=0;
             
             if(adj==k){
                 count++;
                 adj=0;
-            }
-            
-            
+            } 
         }
         return count>=m;
     }
