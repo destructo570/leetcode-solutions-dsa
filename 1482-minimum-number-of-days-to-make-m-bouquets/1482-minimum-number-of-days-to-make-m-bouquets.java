@@ -9,7 +9,8 @@ class Solution {
             
             if(feasible(bloomDay, m, k, mid))
                 right=mid;
-            else left=mid+1;
+            else 
+                left=mid+1;
         }
         return left;
     }
