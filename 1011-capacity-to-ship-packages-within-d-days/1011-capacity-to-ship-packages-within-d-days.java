@@ -1,7 +1,8 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
         
-        int left=1; int right=Integer.MAX_VALUE;
+        int left=max(weights); 
+        int right=Integer.MAX_VALUE;
         
         while(left<right){
             int mid=left+(right-left)/2;
@@ -15,21 +16,24 @@ class Solution {
         
     }
     
-    public boolean isValidWeight(int[] arr, int days, int weight){
-        int count=0;
-        int sum=0;
-        for(int i=0; i<arr.length; i++){
-            sum+=arr[i];
-             if(arr[i]>weight) return false;
-            if(sum==weight){
+    public boolean isValidWeight(int[] weights, int days, int capacity){
+        int count=1;
+        int total=0;
+        for(int weight:weights){
+            total+=weight;
+            if(total>capacity){
                 count++;
-                sum=0;
-            }else if(sum>weight){
-                count++;
-                sum=arr[i];
+                total=weight;
+                if(count>days) return false;
             }
         }
-        if(sum>0) count++;
-        return count<=days;
+        return true;
+    }
+    
+    public int max(int[] arr){
+        int max=Integer.MIN_VALUE;
+        for(int num:arr)
+            max=Math.max(max,num);
+        return max;
     }
 }
