@@ -36,12 +36,12 @@ class Solution
     public static int findPages(int[]A,int N,int B)
     {
          if(A.length<B) return -1;
-        int left=max(A), right=maxSum(A);
+        int left=0, right=0;
 
-        // for(int i=0;i<A.length;i++) {
-        //     right += A[i];
-        //     left = Math.min(left,A[i]);
-        // }
+        for(int i=0;i<A.length;i++) {
+            right += A[i];
+            left = Math.min(left,A[i]);
+        }
 
         while(left<right){
             int mid=left+(right-left)/2;
@@ -56,6 +56,8 @@ class Solution
         int count=1, total=0;
 
         for(int num:arr){
+            if (num > pages)
+                return false;
             total+=num;
             if(total>pages){
                 total=num;
