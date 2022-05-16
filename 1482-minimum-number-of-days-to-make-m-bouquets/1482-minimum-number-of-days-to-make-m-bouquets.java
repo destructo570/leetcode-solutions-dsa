@@ -1,5 +1,7 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
+        if (bloomDay.length < (m * k))
+            return -1;
         int left=1, right=max(bloomDay);
         
         while(left<right){
@@ -9,23 +11,28 @@ class Solution {
                 right=mid;
             else left=mid+1;
         }
-        return feasible(bloomDay, m, k,left)?left:-1;
+        return left;
     }
     
     public boolean feasible(int[] bloomDay, int m, int k, int days){
-        int count=0;
-        
-        int adj=0;
+        int bouquets=0;
+        int flowers=0;
         for(int bloom:bloomDay){
-            if(bloom<=days) adj++;
-            else adj=0;
             
-            if(adj==k){
-                count++;
-                adj=0;
-            } 
+            if(bloom>days) flowers=0;
+            else{
+                bouquets+= (flowers+1)/k;
+                flowers= (flowers+1)%k;
+            }
+//             if(bloom<=days) adj++;
+//             else adj=0;
+            
+//             if(adj==k){
+//                 count++;
+//                 adj=0;
+//             } 
         }
-        return count>=m;
+        return bouquets>=m;
     }
     
     public int max(int[] arr){
@@ -33,12 +40,5 @@ class Solution {
         for(int num:arr)
             max=Math.max(max,num);
         return max;
-    }
-
-    public int min(int[] arr){
-        int min=Integer.MAX_VALUE;
-        for(int num:arr)
-            min=Math.min(min,num);
-        return min;
     }
 }
