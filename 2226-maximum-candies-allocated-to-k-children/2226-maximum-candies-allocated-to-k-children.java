@@ -1,9 +1,10 @@
 class Solution {
     public int maximumCandies(int[] candies, long k) {
-        int left = 0, right = 10_000_000;
+        //if(maxSum(candies)<k) return 0;
+        int left=0; int right=10_000_000;  
 
         while(left<right){
-           int mid = (left + right + 1) / 2;
+            int mid = (left + right + 1) / 2;
             if(feasible(candies, k,mid))
                 left=mid;
             else 
