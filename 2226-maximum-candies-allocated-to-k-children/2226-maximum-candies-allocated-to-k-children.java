@@ -1,6 +1,5 @@
 class Solution {
     public int maximumCandies(int[] candies, long k) {
-        //if(maxSum(candies)<k) return 0;
         int left=0; int right=10_000_000;  
 
         while(left<right){
@@ -18,28 +17,6 @@ class Solution {
         long count=0;
         for(int num:nums)
             count+=num/m;
-            
         return count>=k;
-    }
-    
-    public int maxSum(int[] arr){
-        int sum=0;
-        for(int num:arr)
-            sum+=num;
-        return sum;
-    }
-    
-    public int max(int[] arr){
-        int max=Integer.MIN_VALUE;
-        for(int num:arr)
-            max=Math.max(max,num);
-        return max;
-    }
-    
-    public int min(int[] arr){
-        int min=Integer.MAX_VALUE;
-        for(int num:arr)
-            min=Math.min(min,num);
-        return min;
     }
 }
