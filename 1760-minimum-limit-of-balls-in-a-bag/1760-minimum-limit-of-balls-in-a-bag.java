@@ -1,6 +1,6 @@
 class Solution {
     public int minimumSize(int[] nums, int maxOperations) {
-        int left=1, right=1_000_000_000;
+        int left=1, right=max(nums);
         
         while(left<right){
             int mid=left+(right-left)/2;
