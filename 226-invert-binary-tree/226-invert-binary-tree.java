@@ -15,6 +15,23 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
+        if(root==null)return null;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode top = stack.pop();
+            TreeNode left = top.left;
+            
+            top.left=top.right;
+            top.right=left;
+            
+            if(top.right!=null) stack.push(top.right);
+            if(top.left!=null) stack.push(top.left);
+        }
+        return root;
+    }
+    
+    public TreeNode recursive(TreeNode root) {
         if(root==null) return null;   
         TreeNode left = invertTree(root.left);
         TreeNode right = invertTree(root.right);
