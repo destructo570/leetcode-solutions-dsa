@@ -24,7 +24,7 @@ class Solution {
             TreeNode top = st.peek();
             if(top.left!=null && top.left!=lastPop && top.right!=lastPop){
                 st.push(top.left);
-            }else if(top.right!=null && top.right!=lastPop && (top.left==null || top.left==lastPop)){
+            }else if(top.right!=null && top.right!=lastPop){
                 st.push(top.right);
             }else{
                 st.pop();
