@@ -15,6 +15,24 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
+        //if(root==null) return -1;
+        Stack<TreeNode> st = new Stack<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        while(!st.isEmpty() || root!=null){
+            while(root!=null){
+                st.push(root);
+                root=root.left;
+            }
+            
+            root=st.pop();
+            result.add(root.val);
+            root=root.right;
+        }
+        
+        return result.get(k-1);
+    }
+    
+    public int universalTraversal(TreeNode root, int k) {
         if(root==null) return -1;
         Stack<TreeNode> st = new Stack<>();
         ArrayList<Integer> result = new ArrayList<>();
