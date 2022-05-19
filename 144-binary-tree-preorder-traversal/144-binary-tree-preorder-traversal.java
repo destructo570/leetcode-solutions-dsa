@@ -26,7 +26,7 @@ class Solution {
             if(top.left!=null && top.left!=lastPop && top.right!=lastPop){
                 st.push(top.left);
                 result.add(top.left.val);
-            }else if(top.right!=null && top.right!=lastPop && (top.left==null || top.left==lastPop)){
+            }else if(top.right!=null && top.right!=lastPop){
                 st.push(top.right);
                 result.add(top.right.val);
             }else{
