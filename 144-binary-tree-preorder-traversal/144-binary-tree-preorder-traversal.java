@@ -15,6 +15,10 @@
  */
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
+        return universal(root);
+    }
+    
+    public List<Integer> universal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         if(root==null) return result;
         Stack<TreeNode> st = new Stack<>();
@@ -33,26 +37,21 @@ class Solution {
                 st.pop();
                 lastPop=top;
             }
-            
         }
-        
-        
         return result;
     }
     
-//     public List<Integer> preorderTraversalOne(TreeNode root) {
-//         ArrayList<Integer> result = new ArrayList<>();
-//         if(root==null) return result;
-//         Stack<TreeNode> st = new Stack<>();
-//         st.push(root);
-//         while(!st.isEmpty()){
-//             TreeNode current = st.pop();
-//             result.add(current.val);
-//             if(current.right!=null) st.push(current.right);
-//             if(current.left!=null) st.push(current.left);
-//         }
-        
-        
-//         return result;
-//     }
+    public List<Integer> preorderTraversalOne(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if(root==null) return result;
+        Stack<TreeNode> st = new Stack<>();
+        st.push(root);
+        while(!st.isEmpty()){
+            TreeNode current = st.pop();
+            result.add(current.val);
+            if(current.right!=null) st.push(current.right);
+            if(current.left!=null) st.push(current.left);
+        } 
+        return result;
+    }
 }
