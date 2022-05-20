@@ -15,6 +15,12 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        return iterative(root);
+    }
+    
+    //======================== UNIVERSAL =================//
+    
+    public List<Integer> universal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         if(root==null) return result;
         Stack<TreeNode> st = new Stack<>();
@@ -30,11 +36,32 @@ class Solution {
             }else{
                 st.pop();
                 lastPop=top;
-                if(top.right==null)
+                if(top.right==null) 
                     result.add(top.val);
             }
             
         } 
         return result;
     }
+    
+    //======================== ITERATIVE =================//
+    
+    public List<Integer> iterative(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if(root==null) return result;
+        Stack<TreeNode> st = new Stack<>();
+        
+        while(!st.isEmpty() || root!=null){
+            while(root!=null){
+                st.push(root);
+                root=root.left;
+            }
+            
+            root=st.pop();
+            result.add(root.val);
+            root=root.right;
+        } 
+        return result;
+    }
+    
 }
