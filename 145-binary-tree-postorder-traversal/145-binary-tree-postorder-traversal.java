@@ -15,6 +15,10 @@
  */
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
+        return universal(root);
+    }
+    
+    public List<Integer> universal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         if(root==null) return result;
         Stack<TreeNode> st = new Stack<>();
@@ -36,6 +40,7 @@ class Solution {
         return result;
      
     }
+    
     public List<Integer> postorderOne(TreeNode root) {
         LinkedList<Integer> result = new LinkedList<>();
         if(root==null) return result;
