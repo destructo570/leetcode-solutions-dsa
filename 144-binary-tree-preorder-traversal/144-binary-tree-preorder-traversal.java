@@ -15,8 +15,10 @@
  */
 class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
-        return universal(root);
+        return recursive(root);
     }
+    
+    //======================== UNIVERSAL =================//
     
     public List<Integer> universal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
@@ -41,7 +43,9 @@ class Solution {
         return result;
     }
     
-    public List<Integer> preorderTraversalOne(TreeNode root) {
+    //======================== ITERATIVE =================//
+    
+    public List<Integer> iterative(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         if(root==null) return result;
         Stack<TreeNode> st = new Stack<>();
@@ -53,5 +57,21 @@ class Solution {
             if(current.left!=null) st.push(current.left);
         } 
         return result;
+    }
+    
+    //======================== RECURSIVE =================//
+    
+    public List<Integer> recursive(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        return traverse(root, result);
+    }
+    
+    public List<Integer> traverse(TreeNode root, ArrayList<Integer> res) {
+        if(root == null) return res;
+		
+        res.add(root.val);
+        traverse(root.left, res);
+        traverse(root.right, res);
+        return res;
     }
 }
