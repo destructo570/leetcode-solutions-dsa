@@ -15,7 +15,7 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        return iterative(root);
+        return recursive(root);
     }
     
     //======================== UNIVERSAL =================//
@@ -64,4 +64,22 @@ class Solution {
         return result;
     }
     
+    
+    //======================== RECURSIVE =================//
+    
+    public List<Integer> recursive(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        return recTraverse(root, result);
+    }
+    
+        //======================== ITERATIVE =================//
+    
+    public List<Integer> recTraverse(TreeNode root, List<Integer> result) {
+        if(root==null) return result;
+        
+        recTraverse(root.left, result);
+        result.add(root.val);
+        recTraverse(root.right, result);
+        return result;
+    }
 }
