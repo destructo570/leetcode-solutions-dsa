@@ -22,7 +22,6 @@ class Solution {
     
     public void recursive(TreeNode root, List<String> ans,String path) {
         if(root==null) return;
-      
         path = path+root.val;
         if(root.left==null && root.right==null) ans.add(path);
         else path=path+"->";
