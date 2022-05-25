@@ -1,41 +1,22 @@
 class Solution {
     public int majorityElement(int[] nums) {
-
-        return usingBoyerMoore(nums);
+        return hashmap(nums);
     }
     
-    public int usingBoyerMoore(int[] nums) {
-
-        int count = 0;
-        int current = -1;
-        
-        for(int i=0; i<nums.length; i++){
-            if(count==0){
-                current=nums[i];
-                count++;
-            }else if(nums[i]==current){
-                count++;
-            }else {
-                count--;
-            }
+    public int hashmap(int[] nums) {
+        HashMap<Integer,Integer> hm = new HashMap<>(); 
+        for(int num:nums){
+            hm.put(num, hm.getOrDefault(num,0)+1);
+            if(hm.get(num)>nums.length/2) return num;
         }
-        
-        return current;
+        return 0;
     }
     
-        public int usingHashing(int[] nums) {
-
-        HashMap<Integer, Integer> hm = new HashMap<>();
+//     public int majorityElement(int[] nums) {
         
-        for(int i=0; i<nums.length; i++)
-            hm.put(nums[i], hm.getOrDefault(nums[i], 0)+1);
-        
-        for(HashMap.Entry<Integer, Integer> entry: hm.entrySet())
-            if(entry.getValue()>nums.length/2)
-                return entry.getKey();
-        
-        return -1;
-    }
+//     }
     
-    
+//     public int majorityElement(int[] nums) {
+        
+//     }
 }
