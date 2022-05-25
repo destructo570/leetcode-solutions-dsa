@@ -1,11 +1,19 @@
 class Solution {
     public int fib(int n) {
-        return recursive(n);
+        return iterative(n);
     }
     
-//     public int iterative(int n) {
-        
-//     }
+    public int iterative(int n) {
+        if(n==1) return 1;
+        if(n==0) return 0;
+        int a=0; int b=1;
+        for(int i=2; i<n+1; i++){
+            int f = a+b;
+            a=b;
+            b=f;
+        }
+        return b;
+    }
     
     public int recursive(int n) {
         if(n==1) return 1;
