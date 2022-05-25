@@ -1,16 +1,16 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        int N=nums.length;
-        
-        int[] result = new int[N];
-        int i=0; int j=N-1;
-        
-        for(int p=j; p>=0; p--){
-            if(Math.abs(nums[i]) > Math.abs(nums[j])){
-                result[p]=nums[i]*nums[i];
+        int[] result = new int[nums.length];
+        int ptr=nums.length-1;
+        int i=0, j=nums.length-1;
+        while(ptr>=0){
+            int a=nums[i]*nums[i];
+            int b=nums[j]*nums[j];
+            if(a>b) {
+                result[ptr--]=a;
                 i++;
             }else{
-                result[p]=nums[j]*nums[j];
+                result[ptr--]=b;
                 j--;
             }
         }
@@ -18,21 +18,8 @@ class Solution {
     }
     
     public void swap(int[] arr, int i, int j){
-        int tmp = arr[i];
+        int temp=arr[i];
         arr[i]=arr[j];
-        arr[j]=tmp; 
+        arr[j]=temp;
     }
-    
-    public int[] sortedSquaresTrivial(int[] nums) {
-        
-        for(int i=0; i<nums.length; i++)
-            nums[i]=nums[i]*nums[i];
-                
-        Arrays.sort(nums);
-        return nums;
-    }
-    
-    
-    
-
 }
