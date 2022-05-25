@@ -8,7 +8,7 @@ class Solution {
         int j=colors.length-1;
         for(int i=0; i<colors.length; i++){
             if(colors[i]!=colors[j]) max = Math.max(max, Math.abs(i-j)); 
-            if(colors[0]!=colors[j-i]) max = Math.max(max, Math.abs((i-i)-(j-i)));
+            if(colors[0]!=colors[j-i]) max = Math.max(max, Math.abs((0)-(j-i)));
         }
         return max;
     }
