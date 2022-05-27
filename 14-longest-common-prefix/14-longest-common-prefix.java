@@ -1,5 +1,10 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
+
+        return bruteForce(strs);
+    }
+
+    public String bruteForce(String[] strs) {
         String result="";
         
         String chk ="";
@@ -16,11 +21,10 @@ class Solution {
                 if(s.charAt(i)!=chk.charAt(i))
                     return result.isEmpty() ? "" : result;
             }
-            
             result=result+chk.charAt(i);
-            
         }
         
         return result;
     }
+
 }
