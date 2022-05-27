@@ -7,11 +7,8 @@ class Solution {
             if(prev>=timeSeries[i]){
                 int diff = prev - timeSeries[i] + 1;
                 result+=duration-diff;
-                prev=timeSeries[i]+duration-1;
-            }else{
-                prev=timeSeries[i]+duration-1;
-                result+=duration;
-            }
+            }else result+=duration;
+            prev=timeSeries[i]+duration-1;
         }
         return result;
     }
