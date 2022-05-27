@@ -8,14 +8,11 @@ class Solution {
             else productSoFar*=nums[i];
         }
         if(count>1) return result;
-        
         for(int i=0; i<result.length; i++){
-            if(nums[i]!=0){
-                if(count>0){
-                    result[i]=0;
-                }else result[i]=productSoFar/nums[i];
-                
-            }else result[i]=productSoFar;
+            if(nums[i]!=0)
+                result[i]=count>0?0:productSoFar/nums[i];
+            else 
+                result[i]=productSoFar;
         }
         
         return result;
