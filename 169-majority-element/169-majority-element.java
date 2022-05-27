@@ -19,14 +19,11 @@ class Solution {
             if(count==0){
                 current=nums[i];
                 count=1;
-            }else if(nums[i]==current){
+            }else if(nums[i]==current)
                 count++;
-            }else count--;
+             else count--;
         }
         return current;
     }
     
-//     public int majorityElement(int[] nums) {
-        
-//     }
 }
