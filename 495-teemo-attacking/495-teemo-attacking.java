@@ -4,10 +4,10 @@ class Solution {
         int result=0;
         int n = timeSeries.length;
         for(int i=0; i<n; i++){
-            if(prev>=timeSeries[i]){
-                int diff = prev - timeSeries[i] + 1;
-                result+=duration-diff;
-            }else result+=duration;
+            if(prev>=timeSeries[i])
+                result+=duration-(prev - timeSeries[i] + 1);
+            else 
+                result+=duration;
             prev=timeSeries[i]+duration-1;
         }
         return result;
