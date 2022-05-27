@@ -13,13 +13,8 @@ class Solution {
         
         for(int i=0; i<len; i++){
             for(String s:strs){
-                if(s.charAt(i)!=chk.charAt(i)){
-                    if(result.isEmpty()){
-                        return "";
-                    }else{
-                        return result;
-                    }
-                }
+                if(s.charAt(i)!=chk.charAt(i))
+                    return result.isEmpty() ? "" : result;
             }
             
             result=result+chk.charAt(i);
