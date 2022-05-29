@@ -1,6 +1,5 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        
         return marking(nums);
     }
     
@@ -10,7 +9,6 @@ class Solution {
             if(nums[idx]<0) return idx;
             nums[idx]=-nums[idx];
         }
-       
         return 0;
     }
     
