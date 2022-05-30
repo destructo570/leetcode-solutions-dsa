@@ -11,7 +11,6 @@ class Solution {
         
         int result = solve(m-1, n,hm)+solve(m, n-1,hm);
         hm.put(m+","+n, result);
-        hm.put(n+","+m, result);
         return result;
     }
 }
