@@ -1,14 +1,15 @@
 class Solution {
     public int climbStairs(int n) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        return climb(n,hm);
+        int[] dp=new int[n+1];
+        return helper(n, dp);
     }
     
-    public int climb(int n,HashMap<Integer,Integer> hm) {
-        if(hm.containsKey(n)) return hm.get(n);
-        if(n==0||n==1) return 1;
-        int result = climb(n-1,hm)+climb(n-2,hm);
-        hm.put(n,result);
-        return result;
+    public int helper(int n, int[] dp) {
+        if(n==0) return 1;
+        if(n<0) return 0;
+        if(dp[n]!=0) return dp[n];
+        
+        int result = helper(n-1,dp)+helper(n-2,dp);
+        return dp[n]=result;
     }
 }
