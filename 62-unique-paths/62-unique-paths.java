@@ -1,16 +1,15 @@
 class Solution {
     public int uniquePaths(int m, int n) {
-        HashMap<String,Integer> hm = new HashMap<>();
-        return solve(m,n,hm);
+        int[][] dp = new int[m+1][n+1];
+        return helper(m,n,dp);
     }
     
-    public int solve(int m, int n, HashMap<String,Integer> hm) {
-        if(hm.containsKey(m+","+n)) return hm.get(m+","+n);
-        if(m==1 && n==1) return 1;
+    public int helper(int m, int n, int[][] dp) {
         if(m==0 || n==0) return 0;
+        if(m==1 || n==1) return 1;
+        if(dp[m][n]!=0) return dp[m][n];
         
-        int result = solve(m-1, n,hm)+solve(m, n-1,hm);
-        hm.put(m+","+n, result);
-        return result;
+        int result = helper(m-1,n,dp)+helper(m,n-1,dp);
+        return dp[m][n]=result;
     }
 }
