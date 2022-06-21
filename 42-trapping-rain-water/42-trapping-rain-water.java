@@ -1,8 +1,6 @@
 class Solution {
     public int trap(int[] height) {
-        HashMap<String,Integer> hm = new HashMap<>();
-        
-        return dp(height);
+        return twoPointer(height);
     }
     
     public int dp(int[] height) {
@@ -17,7 +15,6 @@ class Solution {
         }
         
         rightMax[height.length-1]=height[height.length-1];
-        
         for(int i=height.length-2; i>=0; i--){
             rightMax[i]=Math.max(rightMax[i+1], height[i]);
         }
@@ -50,15 +47,24 @@ class Solution {
         return answer;
     }
     
-    public int helper(int[] height, int i, int j, HashMap<String,Integer> hm) {
-        if(i>=j || i+1==j || j-1==i) return 0;
-        if(hm.containsKey(i+","+j)) return hm.get(i+","+j);
-        int left = helper(height, i+1, j, hm);
-        int right = helper(height, i, j-1, hm);
-        
-        int elevation = Math.min(height[i], height[j]);
-        int result = elevation + Math.max(left, right);
-        hm.put(i+","+j, result);
-        return result;
+    public int twoPointer(int[] height) {
+        // time : O(n)
+        // space : O(1)
+        if (height.length==0) return 0; 
+        int left = 0, right = height.length-1; 
+        int leftMax=0, rightMax=0; 
+        int ans = 0; 
+        while (left < right) {
+            if (height[left] > leftMax) leftMax = height[left]; 
+            if (height[right] > rightMax) rightMax = height[right];
+            if (leftMax < rightMax) {
+                ans += Math.max(0, leftMax-height[left]); 
+                left++; 
+            } else {
+                ans += Math.max(0, rightMax-height[right]); 
+                right--; 
+            }
+        }
+        return ans; 
     }
 }
