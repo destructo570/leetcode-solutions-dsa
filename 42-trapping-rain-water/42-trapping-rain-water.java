@@ -1,70 +1,35 @@
 class Solution {
     public int trap(int[] height) {
-        return twoPointer(height);
-    }
-    
-    public int dp(int[] height) {
-        
-        int answer = 0;
-        
-        int[] leftMax = new int[height.length];
-        int[] rightMax = new int[height.length];
+        int n=height.length;
+        int count=0;
+        int[] leftMax = new int[n];
+        int[] rightMax = new int[n];
         leftMax[0]=height[0];
-        for(int i=1; i<height.length; i++){
-            leftMax[i]=Math.max(leftMax[i-1], height[i]);
+        rightMax[n-1]=height[n-1];
+        for(int j=n-2; j>=0;j--){
+            rightMax[j]=Math.max(rightMax[j+1], height[j]);
         }
-        
-        rightMax[height.length-1]=height[height.length-1];
-        for(int i=height.length-2; i>=0; i--){
-            rightMax[i]=Math.max(rightMax[i+1], height[i]);
-        }
-   
-         for(int i=0; i<height.length; i++){
-            answer += (Math.min(leftMax[i], rightMax[i])-height[i]);
-        }
-        
-        return answer;
-    }
-    
-    public int brute(int[] height) {
-        
-        int answer = 0;
-        
-        
-        for(int i=0; i<height.length; i++){
-            int leftMax=0;
-            int rightMax=0;
             
-            for(int k=i; k>=0; k--){
-                leftMax=Math.max(leftMax, height[k]);
-            }
+        for(int k=1; k<n;k++){
+            leftMax[k]=Math.max(leftMax[k-1], height[k]);
+        }
+        
+        for(int i=0; i<height.length;i++){
+//             int leftMax = 0;    
+//             int rightMax = 0;    
             
-            for(int j=i; j<height.length; j++){
-                rightMax=Math.max(rightMax, height[j]);
-            }
-            answer += (Math.min(leftMax, rightMax)-height[i]);
+//             for(int j=i-1; j>=0;j--){
+//                 leftMax=Math.max(leftMax, height[j]);
+//             }
+            
+//             for(int k=i+1; k<height.length;k++){
+//                 rightMax=Math.max(rightMax, height[k]);
+//             }
+            
+            
+            int calc = Math.min(leftMax[i], rightMax[i])-height[i];
+            count+= calc >=0 ? calc : 0;
         }
-        return answer;
-    }
-    
-    public int twoPointer(int[] height) {
-        // time : O(n)
-        // space : O(1)
-        if (height.length==0) return 0; 
-        int left = 0, right = height.length-1; 
-        int leftMax=0, rightMax=0; 
-        int ans = 0; 
-        while (left < right) {
-            if (height[left] > leftMax) leftMax = height[left]; 
-            if (height[right] > rightMax) rightMax = height[right];
-            if (leftMax < rightMax) {
-                ans += Math.max(0, leftMax-height[left]); 
-                left++; 
-            } else {
-                ans += Math.max(0, rightMax-height[right]); 
-                right--; 
-            }
-        }
-        return ans; 
+        return count;
     }
 }
