@@ -22,12 +22,10 @@ class Solution {
             if(curr.val<x){
                 lessTail.next = curr;
                 lessTail = lessTail.next;
-
             }else{
                 greaterTail.next = curr;
                 greaterTail = greaterTail.next;
             }
-            
             curr=curr.next;
         }
         greaterTail.next=null;
