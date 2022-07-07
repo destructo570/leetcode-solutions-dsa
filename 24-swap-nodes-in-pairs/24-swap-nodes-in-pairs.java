@@ -9,7 +9,25 @@
  * }
  */
 class Solution {
+    
     public ListNode swapPairs(ListNode head) {
+        if(head==null || head.next==null) return head;
+        ListNode curr=head;
+        ListNode newHead=head.next;
+
+        while(curr!=null && curr.next!=null){
+            ListNode tmp = curr;
+            curr=curr.next;
+            tmp.next = curr.next;
+            curr.next=tmp;
+            curr=tmp.next;
+            if (curr != null && curr.next != null) tmp.next = curr.next;
+        }
+        
+        return newHead;
+    }
+    
+    public ListNode swapPairsNaive(ListNode head) {
         if(head==null || head.next==null) return head;
         int i=0;
         head = swap(null, head, head.next);
