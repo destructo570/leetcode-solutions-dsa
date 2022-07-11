@@ -32,7 +32,6 @@ class Solution {
     }
     
     public ListNode reverseList(ListNode begin, ListNode end) {
-        if(begin==null || begin.next==null) return begin;
         ListNode prev = begin;
         ListNode curr = begin.next;
         prev.next=null;
