@@ -15,12 +15,12 @@ class Solution {
         ListNode end = head;
         ListNode dummy = new ListNode(-1);
         ListNode dummyTail = dummy;
-        int size=1;
+        int count=1;
         while(end!=null){
-            size++;
+            count++;
             end=end.next;
-            if(size==k+1){
-                size=1;
+            if(count==k+1){
+                count=1;
                 ListNode node = reverseList(begin, end);
                 dummyTail.next = node;
                 dummyTail = begin;
@@ -33,7 +33,6 @@ class Solution {
     
     public ListNode reverseList(ListNode begin, ListNode end) {
         if(begin==null || begin.next==null) return begin;
-        
         ListNode prev = begin;
         ListNode curr = begin.next;
         prev.next=null;
