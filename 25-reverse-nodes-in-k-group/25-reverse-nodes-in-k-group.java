@@ -14,20 +14,21 @@ class Solution {
         ListNode begin = head;
         ListNode end = head;
         ListNode dummy = new ListNode(-1);
-        ListNode dummyTail = dummy;
+        ListNode tail = dummy;
         int count=1;
+        
         while(end!=null){
             count++;
             end=end.next;
             if(count==k+1){
                 count=1;
                 ListNode node = reverseList(begin, end);
-                dummyTail.next = node;
-                dummyTail = begin;
+                tail.next = node;
+                tail = begin;
                 begin=end;
             }
         }
-        dummyTail.next=begin;
+        tail.next=begin;
         return dummy.next;
     }
     
