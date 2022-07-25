@@ -6,10 +6,11 @@ class Solution {
         for(int i=0; i<nums.length ; i++){
             sum+=nums[i];
         }
+        if(sum%2 != 0) return false;
         return targetSum(nums, 0, sum, sum, hm);
     }
     
-        public static boolean targetSum(int[] arr, int idx, double curr, double sum, HashMap<Double, Boolean> hm){
+   public static boolean targetSum(int[] arr, int idx, double curr, double sum, HashMap<Double, Boolean> hm){
         if(curr == sum/2) return true;
         if(idx>= arr.length || curr<0) return false;
         if(hm.containsKey(curr)) return hm.get(curr);
